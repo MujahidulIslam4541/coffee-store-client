@@ -1,10 +1,10 @@
 import { FaEdit, FaEye } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Coffee = ({ coffee }) => {
   const { _id, name, chef, price, photo, category, test } = coffee;
-
 
   const handleDelete = (_id) => {
     console.log(_id);
@@ -18,8 +18,8 @@ const Coffee = ({ coffee }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/coffee/${_id}`,{
-            method:"DELETE"
+        fetch(`http://localhost:5000/coffee/${_id}`, {
+          method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
@@ -37,7 +37,6 @@ const Coffee = ({ coffee }) => {
       }
     });
   };
-
 
   return (
     <div className="card card-side border-2 shadow-xl bg-[#F5F4F1]">
@@ -65,9 +64,11 @@ const Coffee = ({ coffee }) => {
           <button>
             <FaEye />
           </button>
-          <button>
-            <FaEdit />
-          </button>
+          <Link to={`/updateCoffee/${_id}`}>
+            <button>
+              <FaEdit />
+            </button>
+          </Link>
           <button onClick={() => handleDelete(_id)}>
             <MdDelete />
           </button>
