@@ -28,7 +28,7 @@ const SignUp = () => {
         const newUser={name,email,creationTime}
 
         // User created then send to database
-        fetch('http://localhost:5000/users',{
+        fetch('https://coffe-store-server-seven-smoky.vercel.app/users',{
             method:"POST",
             headers:{
                 'content-type':'application/json'

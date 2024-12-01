@@ -21,7 +21,7 @@ const Users = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         // delete data from database
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://coffe-store-server-seven-smoky.vercel.app/users/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -67,6 +67,7 @@ const Users = () => {
                 <td>{user.email}</td>
                 <td>{user.creationTime}</td>
                 <td>{user.lastSignInTime}</td>
+                
                 <td className="flex gap-2 text-xl">
                   <button>
                     <FaEdit />
